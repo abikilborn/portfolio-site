@@ -11,7 +11,7 @@ import projects from '../data-files/projects.json'
             </h1>
             <div class="mt-6 space-y-7 text-base text-zinc-600">
                 <p>
-                    Over the last 5 years I've had the joy of getting to know
+                    Over the last 6 years I've had the joy of getting to know
                     a lot of different technologies, use many different apps, and make my
                     own little mark in the vast world of the internet.
                 </p>

@@ -8,7 +8,7 @@
             <div class="max-w-2xl mt-9">
                 <h1 class="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">Front-End developer, UX/UI designer, and people enthusiast.</h1>
                 <p class="mt-6 text-base text-zinc-600">
-                    I'm Abi, a front-end developer based in Oklahoma. With 4 years of professional experience in development and design, I know we'd make a great team.
+                    I'm Abi, a front-end developer & UX/UI designer based in Colorado. With 6 years of professional experience in development and design, I know we'd make a great team.
                 </p>
             </div>
             <div class="mt-6 flex gap-6">
