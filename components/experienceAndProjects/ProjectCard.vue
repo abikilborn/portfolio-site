@@ -1,17 +1,16 @@
 <script setup>
 import { LinkIcon } from '@heroicons/vue/20/solid'
-import veedbackLogo from '../../assets/imgs/veedback_logo.png'
-import backItlogo from '../../assets/imgs/backit_logo.png'
 import portfolioLogo from '../../assets/imgs/abi_kilborn.png'
 import pokedexLogo from '../../assets/imgs/pokeball.png'
 import repayLogo from '../../assets/imgs/repay_logo.png'
+import designLogo from '../../assets/imgs/design_icon.png'
 
 const projectImgs = {
-    veedback: veedbackLogo,
-    backit: backItlogo,
     portfolio: portfolioLogo,
     pokedex: pokedexLogo,
-    repay: repayLogo
+    repay: repayLogo,
+    onboarding: designLogo,
+    form_redesign: designLogo
 }
 
 const props = defineProps({
