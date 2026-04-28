@@ -1,24 +1,24 @@
 {
     "1": {
+        "project_name": "Kilborn Creative",
+        "project_id": "kilborn_creative",
+        "project_link": "https://kilborncreative.com/",
+        "project_link_label": "kilborncreative.com",
+        "project_desc": "Built in React, I worked with Claude AI to build this site for my side work: Making Graphics/Merch/Websites/Media for local churches."
+    },
+    "2": {
         "project_name": "Onboarding Feature",
         "project_id": "onboarding",
         "project_link": "https://www.figma.com/design/ry9e7d0zogiZcHjplgxPRj/Onboarding?node-id=1-166&t=2joHAstLlf3SJhAG-1",
         "project_link_label": "figma.com/design",
         "project_desc": "This project combined both design and development work. This project transformed a manual, high-friction onboarding process into a brand new user experience."
     },
-    "2": {
+    "3": {
         "project_name": "Form Re-Design and Re-Structure",
         "project_id": "form_redesign",
         "project_link": "https://www.figma.com/design/2TUDe17OoSVTzrMu4svZUD/Restructuring-Complex-Forms-for-Better-Usability?node-id=0-1&t=2joHAstLlf3SJhAG-1",
         "project_link_label": "figma.com/design",
         "project_desc": "This project combined both design and development work. We were working with two outdated, poorly structured forms. The goal was to reduce that friction, minimize support requests, and modernize the overall user experience."
-    },
-    "3": {
-        "project_name": "Repay",
-        "project_id": "repay",
-        "project_link": "https://www.figma.com/proto/42AWp8QtCOsBlu6LhGPKH3/RePay?node-id=0-1&t=hA9e0uPMGAlJwjZH-1",
-        "project_link_label": "figma.com/proto",
-        "project_desc": "My newest work in progress! I have never loved the user exprience I get when going to pay off my student loans. This project is essentially a re-skin of my current loan provider for my student loans."
     },
     "4": {
         "project_name": "Portfolio site",
