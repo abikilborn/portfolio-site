@@ -7,11 +7,12 @@
 //   { type: 'showcase',  title, text, main: img, phone: img }
 //   { type: 'feature',   eyebrow, title, text, images: [img] }
 //   { type: 'spotlight', img, items: [{ title, text }] }
-//   { type: 'list',      title, text, items: ['...'] }
+//   { type: 'build',     title, text, points: [{ title, text }] }
 //
 // img = { src, alt, width, height, url?, plain?, maxWidth? }
 // plain: true shows the image without a browser frame
 //
+// split = { design: ['...'], code: ['...'] } shows what was designed vs built
 // problem.flow = { tally: [{ value, label }], steps: ['...'] } adds a compact
 // summary of the old flow under the problem section
 

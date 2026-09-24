@@ -35,7 +35,7 @@ export default function Experience() {
         <div ref={h} className="reveal mb-10">
           <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-stone-400 mb-1.5">Experience</p>
           <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold tracking-tight">
-            Where I've <span className="text-blue-600">shipped</span>
+            Where I've <span className="hl text-brand-600">shipped</span>
           </h2>
           <p className="text-stone-500 text-[0.95rem] mt-2 max-w-md leading-relaxed">
             6 years across startups doing both development and design. Going from Figma all the way to production.

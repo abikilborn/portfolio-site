@@ -20,6 +20,18 @@ export default {
     { label: 'Stack', value: 'Vue 3, Tailwind, Figma' },
     { label: 'Year', value: '2026' },
   ],
+  split: {
+    design: [
+      'Met regularly with customer reps to learn what users care about (and what they don’t)',
+      'Designed the dashboard, graphs and KPI cards in Figma',
+      'Renamed and regrouped info so it explains itself',
+    ],
+    code: [
+      'Built the dashboard in Vue 3 + Tailwind',
+      'Rebuilt every sub-page on one shared section component',
+      'Moved forms onto updated input and validation libraries',
+    ],
+  },
   collage: { back: images.overviewBefore, front: images.overviewAfter, label: 'The old and new event overview dashboards' },
 
   card: {
@@ -27,7 +39,7 @@ export default {
     badge: 'Case study',
     tags: ['Figma', 'Vue 3', 'Tailwind'],
     problem: 'Organizers had <b>eight equally weighted numbers and a wall of links</b>, and had to go digging through menus to find basic details about their own event.',
-    solution: 'Rebuilt it around what customers actually care about: <b>relevant graphs, regrouped info and clearer labels</b>, with key details up front.',
+    solution: 'Designed and built it around what customers actually care about: <b>relevant graphs, regrouped info and clearer labels</b>, with every sub-page rebuilt on shared components.',
   },
 
   problem: {
@@ -72,23 +84,23 @@ export default {
       ],
     },
     {
-      type: 'list',
-      title: 'Under the hood',
-      text: 'The redesign went past the overview. Every tab under the dashboard, from Signups to Communications, got the same treatment in code.',
-      items: [
-        'Rebuilt each sub-section so they look the same and behave the same way.',
-        'Moved them onto updated validation and input libraries, so forms across the dashboard validate consistently.',
-        'Built in Vue 3 + Tailwind straight from my own Figma designs.',
+      type: 'build',
+      title: 'Uniform on the surface and underneath',
+      text: 'The redesign went past the overview. Every tab under the dashboard, from Signups to Communications, got the same treatment in code, built in Vue 3 + Tailwind straight from my Figma designs.',
+      points: [
+        { title: 'Shared components', text: 'Every sub-page is rebuilt on one shared section component with grid and stacked layouts, instead of one-off markup per tab.' },
+        { title: 'Consistent validation', text: 'Forms across the dashboard moved to updated input and validation libraries, so every field validates the same way.' },
+        { title: 'Slimmer codebase', text: 'Replacing one-off tab layouts with shared components cut duplicate markup across the dashboard.' },
+        { title: 'Design to code', text: 'Built directly from my Figma designs with the product’s current colors and components, so what shipped matches what was designed.' },
       ],
     },
   ],
 
-  // TODO: swap in real numbers if you have them
   results: {
     title: 'The answers organizers need, right where they look.',
     items: [
       { title: 'Relevant, not exhaustive', text: 'Four KPIs with trends instead of eight tiles of equal weight.' },
-      { title: 'No more digging', text: 'Enabled features and key actions are visible from the overview.' },
+      { title: 'Less hunting', text: 'Key details and enabled features are up front, so organizers don’t have to dig through menus or ask support where things are.' },
       { title: 'Consistent sub-pages', text: 'Every section under the dashboard looks and validates the same way.' },
     ],
   },

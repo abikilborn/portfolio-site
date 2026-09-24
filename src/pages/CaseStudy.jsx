@@ -16,7 +16,7 @@ function Eyebrow({ children, className = '' }) {
 function Chapter({ number, title, text }) {
   return (
     <Reveal className="pt-24 mb-10 max-w-3xl">
-      <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-blue-600 mb-2">Part {number}</p>
+      <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-brand-600 mb-2">Part {number}</p>
       <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-[2.6rem] leading-[1.1] font-bold tracking-tight mb-4">{title}</h2>
       <p className="text-[1.02rem] text-stone-500 leading-relaxed">{text}</p>
     </Reveal>
@@ -32,8 +32,8 @@ function Compare({ before, after }) {
         <BrowserFrame img={before} />
       </div>
       <div>
-        <p className={`${label} text-blue-600`}><span className="w-1.5 h-1.5 rounded-full bg-blue-500" />After</p>
-        <BrowserFrame img={after} className="shadow-lg shadow-blue-900/5" />
+        <p className={`${label} text-brand-600`}><span className="w-1.5 h-1.5 rounded-full bg-brand-500" />After</p>
+        <BrowserFrame img={after} className="shadow-lg shadow-brand-900/5" />
       </div>
     </Reveal>
   )
@@ -46,7 +46,7 @@ function Changes({ items }) {
       <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 border border-stone-200 rounded-2xl overflow-hidden">
         {items.map((item, i) => (
           <li key={item.title} className="bg-white p-6">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-blue-50 text-blue-600 text-[0.7rem] font-bold mb-3">{i + 1}</span>
+            <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-brand-50 text-brand-600 text-[0.7rem] font-bold mb-3">{i + 1}</span>
             <h3 className="text-[0.95rem] font-semibold text-stone-900 mb-1.5">{item.title}</h3>
             <p className="text-sm text-stone-500 leading-relaxed">{item.text}</p>
           </li>
@@ -95,11 +95,11 @@ function Feature({ eyebrow, title, text, images }) {
 function Spotlight({ img, items }) {
   return (
     <Reveal className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] gap-8 lg:gap-12 items-start">
-      <BrowserFrame img={img} className="shadow-lg shadow-blue-900/5" />
+      <BrowserFrame img={img} className="shadow-lg shadow-brand-900/5" />
       <ol className="divide-y divide-stone-200 border-y border-stone-200">
         {items.map((item, i) => (
           <li key={item.title} className="flex gap-3.5 py-4">
-            <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-blue-50 text-blue-600 text-[0.7rem] font-bold flex items-center justify-center">{i + 1}</span>
+            <span className="shrink-0 mt-0.5 w-6 h-6 rounded-md bg-brand-50 text-brand-600 text-[0.7rem] font-bold flex items-center justify-center">{i + 1}</span>
             <div>
               <h3 className="text-[0.95rem] font-semibold text-stone-900 mb-1">{item.title}</h3>
               <p className="text-sm text-stone-500 leading-relaxed">{item.text}</p>
@@ -142,19 +142,51 @@ function OldFlow({ tally, steps }) {
   )
 }
 
-function List({ title, text, items }) {
+// Design + code split shown under the case study header
+function Split({ design, code }) {
+  const item = 'flex gap-2.5 text-sm leading-relaxed'
   return (
-    <Reveal className="mt-24 grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-8 md:gap-16 border-t border-stone-200 pt-12">
-      <div>
-        <Eyebrow>Development</Eyebrow>
-        <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold tracking-tight mb-3">{title}</h2>
+    <div className="animate-rise-4 grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+      <div className="bg-white border border-stone-200 rounded-2xl p-6">
+        <p className="flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.1em] uppercase text-brand-600 mb-4">
+          <span className="w-6 h-6 rounded-md bg-brand-50 flex items-center justify-center text-[0.8rem]">✎</span>
+          Design
+        </p>
+        <ul className="space-y-2.5">
+          {design.map((d) => <li key={d} className={`${item} text-stone-600`}><span className="shrink-0 mt-[0.5rem] w-1.5 h-1.5 rounded-full bg-brand-400" />{d}</li>)}
+        </ul>
+      </div>
+      <div className="bg-stone-900 border border-stone-900 rounded-2xl p-6">
+        <p className="flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.1em] uppercase text-brand-200 mb-4">
+          <span className="w-6 h-6 rounded-md bg-stone-800 flex items-center justify-center font-mono text-[0.65rem]">&lt;/&gt;</span>
+          Code
+        </p>
+        <ul className="space-y-2.5">
+          {code.map((c) => <li key={c} className={`${item} text-stone-300`}><span className="shrink-0 mt-[0.5rem] w-1.5 h-1.5 rounded-full bg-brand-300" />{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+// Front-end talking points: what went into the code, not just the screens
+function Build({ title, text, points }) {
+  return (
+    <Reveal className="mt-24 bg-white border border-stone-200 rounded-3xl p-6 md:p-10">
+      <div className="max-w-2xl mb-8">
+        <p className="flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.1em] uppercase text-brand-700 mb-2">
+          <span className="font-mono">&lt;/&gt;</span> Development
+        </p>
+        <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h2>
         <p className="text-[0.95rem] text-stone-500 leading-relaxed">{text}</p>
       </div>
-      <ul className="space-y-4">
-        {items.map((item) => (
-          <li key={item} className="flex gap-3 text-[0.95rem] text-stone-600 leading-relaxed">
-            <span className="shrink-0 mt-1 w-5 h-5 rounded-full bg-blue-50 text-blue-600 text-[0.65rem] font-bold flex items-center justify-center">✓</span>
-            {item}
+      <ul className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${points.length % 3 === 0 ? 'lg:grid-cols-3' : ''}`}>
+        {points.map((pt) => (
+          <li key={pt.title} className="bg-stone-50 border border-stone-200 rounded-2xl p-5">
+            <p className="inline-flex items-center gap-1.5 text-[0.72rem] font-semibold font-mono text-brand-700 bg-brand-50 border border-brand-100 rounded-md px-2 py-0.5 mb-3">
+              {pt.title}
+            </p>
+            <p className="text-sm text-stone-600 leading-relaxed">{pt.text}</p>
           </li>
         ))}
       </ul>
@@ -170,7 +202,7 @@ function Block({ block }) {
     case 'showcase': return <Showcase {...block} />
     case 'feature': return <Feature {...block} />
     case 'spotlight': return <Spotlight {...block} />
-    case 'list': return <List {...block} />
+    case 'build': return <Build {...block} />
     default: return null
   }
 }
@@ -195,12 +227,12 @@ export default function CaseStudyPage() {
 
         <header className="mb-10">
           <p className="animate-rise-1 flex items-center gap-2 text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-stone-400 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
             Case study · {study.company}
           </p>
           <h1 className="animate-rise-2 font-[family-name:var(--font-display)] text-[2.6rem] md:text-6xl lg:text-7xl leading-[1.02] font-bold tracking-tight mb-6">
             {study.title}<br />
-            <span className="text-blue-600">{study.titleAccent}</span>
+            <span className="hl text-brand-600">{study.titleAccent}</span>
           </h1>
           <p className="animate-rise-3 text-[1.05rem] text-stone-500 leading-relaxed max-w-2xl">{study.summary}</p>
         </header>
@@ -213,6 +245,8 @@ export default function CaseStudyPage() {
             </div>
           ))}
         </dl>
+
+        {study.split && <Split {...study.split} />}
 
         <div className="animate-rise-5">
           <Collage {...study.collage} className="aspect-[4/3] md:aspect-[16/9]" />
@@ -255,11 +289,20 @@ export default function CaseStudyPage() {
 
         {/* Results */}
         <Reveal className="mt-24 bg-stone-900 text-stone-50 rounded-3xl p-8 md:p-12">
-          <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-blue-300 mb-2">The result</p>
+          <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-brand-300 mb-2">The result</p>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold tracking-tight mb-10 max-w-xl">
             {study.results.title}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          <div className={`grid grid-cols-1 gap-8 md:gap-10 ${study.results.stat ? 'md:grid-cols-[1.3fr_1fr_1fr]' : 'md:grid-cols-3'}`}>
+            {study.results.stat && (
+              <div className="border-t border-brand-400 pt-5">
+                <p className="font-[family-name:var(--font-display)] text-6xl md:text-7xl font-semibold tracking-tight text-brand-300 leading-none mb-2">
+                  {study.results.stat.value}
+                </p>
+                <p className="text-xl font-semibold tracking-tight mb-1.5">{study.results.stat.label}</p>
+                <p className="text-sm text-stone-400 leading-relaxed">{study.results.stat.text}</p>
+              </div>
+            )}
             {study.results.items.map((r) => (
               <div key={r.title} className="border-t border-stone-700 pt-5">
                 <p className="text-xl font-semibold tracking-tight mb-1.5">{r.title}</p>
@@ -277,11 +320,11 @@ export default function CaseStudyPage() {
           </div>
           <div className="flex items-center gap-3">
             {next !== study && (
-              <Link to={`/work/${next.slug}`} className="inline-flex items-center bg-white text-stone-900 text-sm font-medium px-5 py-2.5 rounded-lg border border-stone-300 hover:bg-stone-50 transition-colors no-underline">
+              <Link to={`/work/${next.slug}`} className="inline-flex items-center bg-white text-stone-900 text-sm font-semibold px-5 py-2.5 rounded-xl border border-stone-300 hover:bg-stone-50 transition-colors no-underline">
                 Next case study →
               </Link>
             )}
-            <a href="mailto:abikilborn@gmail.com" className="inline-flex items-center gap-1.5 bg-stone-900 text-stone-50 text-sm font-semibold px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity no-underline">
+            <a href="mailto:abikilborn@gmail.com" className="inline-flex items-center gap-1.5 bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-brand-700 transition-opacity no-underline">
               Let's talk →
             </a>
           </div>

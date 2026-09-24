@@ -1,9 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Inter", Georgia, serif;
+  --font-display: "Manrope", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Cool gray neutrals */
+  --color-stone-50: #f4f6f8;
+  --color-stone-100: #eaedf1;
+  --color-stone-200: #dde2e8;
+  --color-stone-300: #c5ccd5;
+  --color-stone-400: #8b939e;
+  --color-stone-500: #5a626d;
+  --color-stone-600: #454c56;
+  --color-stone-700: #353b44;
+  --color-stone-800: #242930;
+  --color-stone-900: #101418;
+  --color-stone-950: #0a0d10;
+
+  /* Cobalt accent */
+  --color-brand-50: #eef3fd;
+  --color-brand-100: #dde7fb;
+  --color-brand-200: #c3d4f8;
+  --color-brand-300: #9ab7f2;
+  --color-brand-400: #6690ea;
+  --color-brand-500: #3f71e0;
+  --color-brand-600: #1f5fd6;
+  --color-brand-700: #1a4db0;
+  --color-brand-800: #1b428e;
+  --color-brand-900: #1b3a72;
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -54,4 +80,23 @@ body {
 }
 .animate-blink {
   animation: blink 2s ease-in-out infinite;
+}
+
+/* Manrope headings: tight and heavy */
+[class*="--font-display"] {
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+/* Highlighter swipe behind accent words */
+.hl {
+  background: linear-gradient(transparent 64%, var(--color-brand-100) 64%);
+  padding: 0 0.05em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Hard offset shadow used on featured screenshots */
+.offset-shadow {
+  box-shadow: 10px 10px 0 var(--color-brand-100);
 }

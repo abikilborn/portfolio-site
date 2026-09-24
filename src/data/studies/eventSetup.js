@@ -33,9 +33,23 @@ export default {
   card: {
     title: 'Event Form Redesign',
     badge: 'New · Case study',
+    stat: '32 → 4 inputs · ~⅔ faster to create an event',
     tags: ['Figma', 'Vue 3', 'Laravel Blade', 'Tailwind'],
     problem: 'A form organizers edit constantly was built like a one-time wizard, with <b>the most-used settings buried in the last step</b> and no room to add new features.',
-    solution: 'Rebuilt it with our support team’s feedback: <b>a two-step create flow, grouped vertical settings, a live-preview page builder</b>, and our first upsell path.',
+    solution: 'Designed and built it with our support team’s feedback: <b>a two-step create flow, grouped vertical settings, a live-preview page builder</b>, and our first upsell path.',
+  },
+  split: {
+    design: [
+      'Worked closely with customer support and mapped user flows around how organizers think',
+      'Designed the create flow, settings, page builder and upgrade modal in Figma',
+      'Theming so every public event page stays on brand',
+    ],
+    code: [
+      'Built the create flow, settings and page builder in Vue 3 + Tailwind',
+      'Removed “Simple Events,” leaving one create flow to maintain',
+      'Consolidated 15+ Blade templates into shared partials',
+      'Shipped a “Classic” theme for backward compatibility',
+    ],
   },
   collage: { back: images.generalSettings, front: images.pageBuilder, phone: images.registrationMobile, label: 'The new event settings, page builder and mobile registration page' },
 
@@ -132,24 +146,26 @@ export default {
       ],
     },
     {
-      type: 'list',
-      title: 'Under the hood',
-      text: 'The public pages are Laravel Blade; the create flow, settings and builder are Vue 3 + Tailwind. Designing it myself meant I could plan the code structure while I was still in Figma.',
-      items: [
-        'Removed the separate “Simple Events” form, so there’s one create flow to maintain.',
-        'Pulled duplicated markup and CSS out of 15+ Blade templates into shared partials, so every public event page renders from one source.',
-        'Fixed older bugs along the way, including a time-formatting crash and an inverted timezone setting.',
+      type: 'build',
+      title: 'Built to be maintained, not just shipped',
+      text: 'The public pages are Laravel Blade; the create flow, settings and builder are Vue 3 + Tailwind. Designing it myself meant I could plan the code structure while I was still in Figma, so the new form shipped on a cleaner foundation instead of on top of the old one.',
+      points: [
+        { title: 'Slimmer codebase', text: 'Removed the separate “Simple Events” form and its code paths, leaving one create flow to build on, test and maintain.' },
+        { title: 'Shared partials', text: 'Consolidated 15+ duplicated Blade templates into shared partials, so every public event page renders from one source.' },
+        { title: 'Shared components', text: 'Feature and add-on settings (VIPs, paid tiers, credentials) are built from shared form components instead of one-off markup.' },
+        { title: 'Consistent validation', text: 'Inputs and validation rules come from one shared library, so every field behaves and shows errors the same way.' },
+        { title: 'Backward compatible', text: 'The new builder shipped with a “Classic” theme, so existing events kept their look until organizers chose to switch.' },
+        { title: 'Easier to extend', text: 'Settings are read straight from the event instead of passed through every template, so adding one touches a single file.' },
       ],
     },
   ],
 
-  // TODO: swap in real numbers if you have them (support tickets, upgrades, time to create an event)
   results: {
     title: 'A form that can grow without getting harder to use.',
+    stat: { value: '32 → 4', label: 'inputs to create an event', text: 'The old wizard had 32 inputs in its first two steps; the new flow needs 4 fields. By my estimate, that makes creating an event about two-thirds faster.' },
     items: [
       { title: 'One create flow', text: 'Replaced both the five-step wizard and “Simple Events,” with a lot less code to maintain.' },
       { title: 'First in-app upsell', text: 'Premium features are visible and one click from an upgrade, a new revenue path.' },
-      { title: 'Live preview', text: 'Fixed one of the most common complaints about the old form.' },
     ],
   },
 }

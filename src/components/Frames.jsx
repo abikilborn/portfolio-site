@@ -85,7 +85,7 @@ export function PhoneFrame({ img, className = '' }) {
         <div
           tabIndex={0}
           aria-label={`${img.alt} (scrollable)`}
-          className="h-full overflow-hidden lg:overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+          className="h-full overflow-hidden lg:overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
         >
           <img src={img.src} alt={img.alt} width={img.width} height={img.height} loading="lazy" className="block w-full h-auto" />
         </div>
@@ -109,10 +109,10 @@ export function Collage({ back, front, phone, overlay, label, className = '' }) 
   return (
     <div
       role="img" aria-label={label}
-      className={`relative overflow-hidden rounded-2xl border border-stone-200 bg-linear-to-br from-blue-50 via-stone-50 to-stone-100 ${className}`}
+      className={`relative overflow-hidden rounded-2xl border border-stone-200 bg-linear-to-br from-brand-50 via-stone-50 to-stone-100 ${className}`}
     >
       <img src={back.src} alt="" loading="lazy" className={`${shot} left-[4%] top-[9%] w-[56%] shadow-md opacity-90 transition-transform duration-500 group-hover:-translate-y-1`} />
-      <img src={front.src} alt="" loading="lazy" className={`${shot} right-[4%] top-[18%] w-[58%] shadow-2xl shadow-stone-900/15 transition-transform duration-500 group-hover:-translate-y-2`} />
+      <img src={front.src} alt="" loading="lazy" className={`${shot} right-[4%] top-[18%] w-[58%] !border-[1.5px] !border-stone-900 offset-shadow transition-transform duration-500 group-hover:-translate-y-2`} />
       {phone && (
         <div className="absolute left-[9%] top-[38%] w-[15%] aspect-[9/19] rounded-[14%/7%] border-[5px] border-stone-900 bg-white overflow-hidden shadow-2xl transition-transform duration-500 group-hover:-translate-y-3">
           <img src={phone.src} alt="" loading="lazy" className="w-full h-auto" />

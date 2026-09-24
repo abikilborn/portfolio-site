@@ -22,10 +22,10 @@ function FeaturedCase({ study, flip }) {
       <div className="flex flex-col">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <p className="flex items-center gap-2 text-[0.68rem] font-semibold tracking-[0.08em] uppercase text-stone-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
             UX/UI Design + Development
           </p>
-          <span className="text-[0.62rem] font-bold tracking-[0.06em] uppercase text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 -my-0.5 rounded-full">
+          <span className="text-[0.62rem] font-bold tracking-[0.06em] uppercase text-brand-700 bg-brand-50 border border-brand-100 px-2 py-0.5 -my-0.5 rounded-full">
             {card.badge}
           </span>
         </div>
@@ -35,13 +35,19 @@ function FeaturedCase({ study, flip }) {
           <p className={rich} dangerouslySetInnerHTML={{ __html: card.problem }} />
         </div>
         <div className="mb-5">
-          <p className="text-[0.68rem] font-bold tracking-[0.06em] uppercase text-blue-600 mb-1">The Solution</p>
+          <p className="text-[0.68rem] font-bold tracking-[0.06em] uppercase text-brand-600 mb-1">The Solution</p>
           <p className={rich} dangerouslySetInnerHTML={{ __html: card.solution }} />
         </div>
+        {card.stat && (
+          <p className="inline-flex self-start items-center gap-2 text-sm font-semibold text-brand-700 bg-brand-50 border border-brand-100 rounded-lg px-3 py-1.5 mb-5">
+            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+            {card.stat}
+          </p>
+        )}
         <div className="flex flex-wrap gap-1.5 mb-5">
           {card.tags.map((t) => <Tag key={t}>{t}</Tag>)}
         </div>
-        <span className="text-[0.8rem] font-semibold text-blue-600 mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
+        <span className="text-[0.8rem] font-semibold text-brand-600 mt-auto flex items-center gap-1 group-hover:gap-2 transition-all">
           Read the case study →
         </span>
       </div>
@@ -60,7 +66,7 @@ export default function Projects() {
       <div ref={h} className="reveal mb-10">
         <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-stone-400 mb-1.5">Projects</p>
         <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold tracking-tight">
-          My <span className="text-blue-600">work</span>
+          My <span className="hl text-brand-600">work</span>
         </h2>
         <p className="text-stone-500 text-[0.95rem] mt-2 max-w-md leading-relaxed">
           Real problems + real solutions: Solved with design and development.
@@ -86,7 +92,7 @@ export default function Projects() {
               Personal brand site for my freelance work — <span className="text-stone-700 font-semibold">graphics, merch, websites, and media for local churches</span>. Built end-to-end in React.
             </p>
           </div>
-          <span className="shrink-0 text-[0.8rem] font-semibold text-blue-600 flex items-center gap-1 group-hover:gap-2 transition-all">Visit site →</span>
+          <span className="shrink-0 text-[0.8rem] font-semibold text-brand-600 flex items-center gap-1 group-hover:gap-2 transition-all">Visit site →</span>
         </a>
 
       </div>

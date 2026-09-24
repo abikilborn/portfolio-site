@@ -75,8 +75,8 @@ export default function Nav() {
       <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'bg-stone-50/85 backdrop-blur-md border-b border-stone-200' : 'bg-transparent border-b border-transparent'}`}>
         <div className="max-w-[1100px] mx-auto h-16 px-6 md:px-8 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2.5 no-underline text-stone-900">
-            <span className="w-8 h-8 rounded-lg bg-stone-900 text-stone-50 flex items-center justify-center text-[0.8rem] font-bold tracking-tight">AK</span>
-            <span className="text-[0.95rem] font-semibold tracking-tight">Abi Kilborn</span>
+            <span className="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center text-[0.72rem] font-bold tracking-tight">AK</span>
+            <span className="font-[family-name:var(--font-display)] text-[1.05rem] font-semibold tracking-tight">Abi Kilborn</span>
           </Link>
 
           {/* Desktop */}
@@ -86,7 +86,7 @@ export default function Nav() {
                 {l.label}
               </SectionLink>
             ))}
-            <a href="mailto:abikilborn@gmail.com" className="ml-3 bg-stone-900 text-stone-50 text-[0.85rem] font-semibold px-4 py-2 rounded-lg hover:opacity-85 transition-opacity no-underline">
+            <a href="mailto:abikilborn@gmail.com" className="ml-3 bg-stone-900 text-stone-50 text-[0.85rem] font-semibold px-4 py-2 rounded-xl hover:opacity-85 transition-opacity no-underline">
               Let's talk →
             </a>
           </div>

@@ -11,7 +11,7 @@ export default function About() {
       <div className="mb-10">
         <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-stone-400 mb-1.5">About</p>
         <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold tracking-tight">
-          We'd make a <span className="text-blue-600">great team</span>!
+          We'd make a <span className="hl text-brand-600">great team</span>!
         </h2>
       </div>
 
@@ -32,7 +32,7 @@ export default function About() {
         <div ref={g} className="reveal">
           <div className="bg-white border border-stone-200 rounded-2xl p-7 shadow-sm sticky top-20">
             <a href="mailto:abikilborn@gmail.com"
-              className="block text-center text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-xl py-3 mb-3 hover:bg-blue-100 hover:-translate-y-px transition-all no-underline">
+              className="block text-center text-sm font-semibold text-brand-600 bg-brand-50 border border-brand-100 rounded-xl py-3 mb-3 hover:bg-brand-100 hover:-translate-y-px transition-all no-underline">
               abikilborn@gmail.com
             </a>
 

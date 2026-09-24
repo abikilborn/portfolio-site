@@ -14,13 +14,13 @@ export default function WritingPreview() {
           <div>
             <p className="text-[0.7rem] font-semibold tracking-[0.1em] uppercase text-stone-400 mb-1.5">Writing</p>
             <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-normal tracking-tight">
-              Thinking out <em className="italic text-blue-600">loud</em>
+              Thinking out <em className="hl text-brand-600">loud</em>
             </h2>
             <p className="text-stone-500 text-[0.95rem] mt-2 max-w-md leading-relaxed">
               Real takes on front-end craft, UX, and working well in teams.
             </p>
           </div>
-          <Link to="/writing" className="text-sm font-semibold text-blue-600 no-underline hover:opacity-70 transition-opacity whitespace-nowrap pb-0.5">
+          <Link to="/writing" className="text-sm font-semibold text-brand-600 no-underline hover:opacity-70 transition-opacity whitespace-nowrap pb-0.5">
             View all articles →
           </Link>
         </div>
@@ -33,9 +33,9 @@ export default function WritingPreview() {
               className="group flex flex-col p-6 bg-white hover:bg-stone-50/60 transition-colors no-underline text-stone-900"
             >
               <p className="text-[0.68rem] font-medium text-stone-400 tracking-wide mb-3">{a.date} · {a.readTime}</p>
-              <h3 className="font-[family-name:var(--font-display)] text-lg font-normal leading-snug tracking-tight mb-3 flex-1 group-hover:text-blue-600 transition-colors">{a.title}</h3>
+              <h3 className="font-[family-name:var(--font-display)] text-lg font-normal leading-snug tracking-tight mb-3 flex-1 group-hover:text-brand-600 transition-colors">{a.title}</h3>
               <p className="text-sm text-stone-400 leading-relaxed mb-4 line-clamp-3">{a.preview}</p>
-              <span className="text-[0.75rem] font-semibold text-blue-600">Read →</span>
+              <span className="text-[0.75rem] font-semibold text-brand-600">Read →</span>
             </Link>
           ))}
         </div>

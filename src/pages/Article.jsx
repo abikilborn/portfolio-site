@@ -12,7 +12,7 @@ function Block({ block }) {
       return <h3 className="text-base font-semibold text-stone-900 mt-7 mb-3">{block.text}</h3>
     case 'quote':
       return (
-        <blockquote className="border-l-[3px] border-blue-500 pl-5 my-7 font-[family-name:var(--font-display)] text-xl font-normal italic text-stone-500 leading-relaxed">
+        <blockquote className="border-l-[3px] border-brand-500 pl-5 my-7 font-[family-name:var(--font-display)] text-xl font-normal italic text-stone-500 leading-relaxed">
           {block.text}
         </blockquote>
       )
@@ -34,7 +34,7 @@ function Block({ block }) {
       )
     case 'callout':
       return (
-        <div className="bg-blue-50 border border-blue-100 rounded-xl p-5 my-7 text-[0.95rem] text-blue-800 leading-relaxed">
+        <div className="bg-brand-50 border border-brand-100 rounded-xl p-5 my-7 text-[0.95rem] text-brand-800 leading-relaxed">
           {block.text}
         </div>
       )
