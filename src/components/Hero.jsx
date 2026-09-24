@@ -32,9 +32,9 @@ function DesignToCode() {
 
   return (
     <Link
-      to="/work/events-redesign"
+      to="/work/event-setup-redesign"
       className="group relative block no-underline pb-10 sm:pb-12"
-      aria-label="Read the Events redesign case study"
+      aria-label="Read the event form case study"
     >
       <div className="relative">
         <p className="absolute -top-6 left-0 text-[0.68rem] font-medium text-blue-600 whitespace-nowrap">

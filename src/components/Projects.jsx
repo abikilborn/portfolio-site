@@ -3,7 +3,7 @@ import useReveal from '../hooks/useReveal'
 import { Collage } from './Frames'
 import { getCaseStudy } from '../data/caseStudies'
 
-const featured = [getCaseStudy('events-redesign'), getCaseStudy('event-setup-redesign')]
+const featured = [getCaseStudy('event-setup-redesign'), getCaseStudy('events-redesign')]
 
 function Tag({ children }) {
   return <span className="text-[0.68rem] font-medium text-stone-500 bg-stone-100 border border-stone-200 px-2.5 py-0.5 rounded-md">{children}</span>

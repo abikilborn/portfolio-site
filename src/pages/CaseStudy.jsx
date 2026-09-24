@@ -69,7 +69,7 @@ function Showcase({ title, text, main, phone }) {
           <BrowserFrame img={main} />
         </div>
         <div className="max-w-[250px] mx-auto w-full">
-          <Eyebrow>Mobile · scroll me</Eyebrow>
+          <Eyebrow>Mobile<span className="hidden lg:inline"> · scroll me</span></Eyebrow>
           <PhoneFrame img={phone} />
         </div>
       </div>

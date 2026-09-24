@@ -75,17 +75,29 @@ export function Shot({ img, className = '' }) {
   )
 }
 
-// Scrollable phone, so visitors can scroll the whole mobile page in place
+// Phone frame: scrolls in place on desktop; on small screens it's a
+// fixed preview that opens the full page, so it never fights page scroll
 export function PhoneFrame({ img, className = '' }) {
+  const [open, setOpen] = useState(false)
   return (
     <figure className={`bg-stone-900 rounded-[2.2rem] p-2 shadow-xl ${className}`}>
-      <div
-        tabIndex={0}
-        aria-label={`${img.alt} (scrollable)`}
-        className="relative rounded-[1.7rem] overflow-y-auto aspect-[9/19] bg-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-      >
-        <img src={img.src} alt={img.alt} width={img.width} height={img.height} loading="lazy" className="block w-full h-auto" />
+      <div className="relative h-[440px] sm:h-[500px] rounded-[1.7rem] overflow-hidden bg-white">
+        <div
+          tabIndex={0}
+          aria-label={`${img.alt} (scrollable)`}
+          className="h-full overflow-hidden lg:overflow-y-auto overscroll-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+        >
+          <img src={img.src} alt={img.alt} width={img.width} height={img.height} loading="lazy" className="block w-full h-auto" />
+        </div>
+        <button
+          onClick={() => setOpen(true)}
+          aria-label={`View full page: ${img.alt}`}
+          className="lg:hidden absolute inset-0 flex items-end justify-center pb-5 bg-linear-to-t from-white via-transparent to-transparent"
+        >
+          <span className="text-[0.75rem] font-semibold text-white bg-stone-900/85 px-3 py-1.5 rounded-full">View full page</span>
+        </button>
       </div>
+      {open && <Lightbox img={img} onClose={() => setOpen(false)} />}
     </figure>
   )
 }

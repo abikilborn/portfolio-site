@@ -1,54 +1,62 @@
-// Event setup (complex form) case study (/work/event-setup-redesign)
+// Event form case study (/work/event-setup-redesign)
 
 import quickCreate from '../../assets/imgs/forms/quick-create.webp'
-import enhanceCard from '../../assets/imgs/forms/enhance-card.webp'
 import generalSettings from '../../assets/imgs/forms/after-general-settings.webp'
+import upgradeModal from '../../assets/imgs/forms/upgrade-modal.webp'
+import pageBuilder from '../../assets/imgs/events/page-builder.webp'
+import registrationBefore from '../../assets/imgs/events/registration-before.webp'
+import registrationAfter from '../../assets/imgs/events/registration-after.webp'
+import registrationMobile from '../../assets/imgs/events/registration-mobile.webp'
 
 const images = {
   quickCreate: { src: quickCreate, width: 1512, height: 1067, url: 'nucleus.app/connect/events/create', alt: 'New create screen: “Let’s set up your event” with name, start, end and location fields' },
-  enhanceCard: { src: enhanceCard, width: 715, height: 223, plain: true, maxWidth: 715, alt: 'Enhance your event card with four optional next steps' },
-  generalSettings: { src: generalSettings, width: 1512, height: 944, url: 'nucleus.app/connect/events/settings', alt: 'New General Settings page with a grouped side nav and toggle cards for paid events, phone verification, tickets and multiple signups' },
+  generalSettings: { src: generalSettings, width: 1512, height: 944, url: 'nucleus.app/connect/events/settings', alt: 'New General Settings page with a vertical, grouped side nav and toggle cards for paid events, phone verification, tickets and multiple signups' },
+  upgradeModal: { src: upgradeModal, width: 655, height: 567, plain: true, maxWidth: 440, alt: 'Upgrade modal offering VIP Credentialing as a $49 per-event add-on or the $199 per month Pro plan' },
+  pageBuilder: { src: pageBuilder, width: 1512, height: 1348, url: 'nucleus.app/connect/events/design', alt: 'Page builder: draggable page sections on the left and a live preview of the registration page on the right' },
+  registrationBefore: { src: registrationBefore, width: 1336, height: 969, url: 'northwind.org/events/community-kickoff-rally', alt: 'Old registration page: a hero photo, placeholder-only inputs and three identical red No, Maybe and Yes buttons' },
+  registrationAfter: { src: registrationAfter, width: 1920, height: 1731, url: 'northwind.org/events/community-kickoff-rally', alt: 'New registration page: branded header over the event photo, the form in a raised card with persistent labels, and an event details sidebar' },
+  registrationMobile: { src: registrationMobile, width: 390, height: 2656, alt: 'New registration page on mobile, with the event details card below the form' },
 }
 
 export default {
   slug: 'event-setup-redesign',
   company: 'Campaign Nucleus',
-  title: 'Event setup,',
-  titleAccent: 'without the maze',
-  summary: 'Creating an event in Nucleus meant a five-step wizard that asked about everything up front: features, portals, tiers, templates and redirects. It didn’t follow the way organizers actually work, and every new feature made it longer. I redesigned it into a four-field quick start, followed by settings organized the way people look for them.',
+  title: 'The event form,',
+  titleAccent: 'built to grow',
+  summary: 'Organizers create an event once, then come back to edit it again and again. The old form was built like a one-time wizard, and it had run out of room. Working closely with our customer support team, I redesigned it end to end: a two-step create flow, settings grouped the way people use them, a drag-and-drop page builder with a live preview, and the product’s first in-app upsell.',
   meta: [
     { label: 'Role', value: 'UX/UI Design + Frontend Dev' },
-    { label: 'Scope', value: 'Event creation and event settings' },
-    { label: 'Stack', value: 'Vue 3, Tailwind, Figma' },
+    { label: 'Scope', value: 'Event creation, settings, page builder, upsell' },
+    { label: 'Stack', value: 'Vue 3, Laravel Blade, Tailwind, Figma' },
     { label: 'Year', value: '2026' },
   ],
   card: {
-    title: 'Complex Form Redesign',
-    badge: 'Case study',
-    tags: ['Figma', 'Vue 3', 'Tailwind'],
-    problem: 'Two outdated forms were generating <b>user confusion and a ton of support tickets</b>. The UX was fighting users instead of helping them.',
-    solution: 'Rebuilt the form completely with <b>modernized visuals and re-grouped fields</b>, which measurably reduced friction and reduced the number of support tickets.',
+    title: 'Event Form Redesign',
+    badge: 'New · Case study',
+    tags: ['Figma', 'Vue 3', 'Laravel Blade', 'Tailwind'],
+    problem: 'A form organizers edit constantly was built like a one-time wizard, with <b>the most-used settings buried in the last step</b> and no room to add new features.',
+    solution: 'Rebuilt it with our support team’s feedback: <b>a two-step create flow, grouped vertical settings, a live-preview page builder</b>, and our first upsell path.',
   },
-  collage: { back: images.generalSettings, front: images.quickCreate, overlay: images.enhanceCard, label: 'The new event settings, quick create screen and Enhance your event card' },
+  collage: { back: images.generalSettings, front: images.pageBuilder, phone: images.registrationMobile, label: 'The new event settings, page builder and mobile registration page' },
 
   problem: {
     title: 'Where it started',
-    text: 'The old create flow was a five-step wizard: General, Date & Location, Feature Settings, Template and Settings. It was a lot, and it didn’t match the order organizers actually work in.',
+    text: 'The old form was a five-step wizard with horizontal navigation. That works for something you fill out once, but organizers come back to their events over and over. Our customer support team kept hearing the same complaints.',
     groups: [
       {
-        label: 'Too much, too soon',
+        label: 'What organizers told support',
         items: [
-          'Step one asked organizers to pick from eight features before they could set any of them up',
-          'Date & Location alone had more than a dozen fields, including signup and door windows and map coordinates',
-          'Every feature you checked added its own sub-page to step three',
+          'The settings they changed most were in the last step, so every quick edit meant getting through the whole wizard',
+          'There was no way to see the registration page while editing it',
+          'It felt like a whole form to fill out when they just wanted to get an event up',
         ],
       },
       {
-        label: 'Hard to find, hard to grow',
+        label: 'What the product needed',
         items: [
-          'Settings like redirects and auto-responders were buried in step five',
-          'Columns of Yes/No radio pairs with little explanation of what each one did',
-          'Adding a new field or feature meant making an already long form even longer',
+          'Room to add new features without making the form longer for everyone',
+          'One create flow instead of a separate “Simple Events” form, which doubled the code to maintain',
+          'A way to show organizers premium features they didn’t have yet',
         ],
       },
     ],
@@ -66,51 +74,82 @@ export default {
   body: [
     {
       type: 'chapter', number: '01',
-      title: 'Start with four fields, not five steps',
-      text: 'Most organizers just need the event to exist so they can share it and come back later. So creating one now asks only for the essentials.',
+      title: 'One two-step flow instead of two forms',
+      text: 'The original ask was simple: let organizers create an event quickly, without feeling like they have to fill out a whole form. The old answer was a separate “Simple Events” form next to the full wizard. I replaced both with one two-step flow, which kept the quick path and removed a big chunk of duplicate code.',
     },
     {
       type: 'spotlight',
       img: images.quickCreate,
       items: [
-        { title: 'Essentials only', text: 'Name, start time, end time and location. Everything else can wait.' },
+        { title: 'Essentials first', text: 'Name, start, end and location are enough to create the event. Everything else can wait.' },
         { title: 'Smart defaults', text: 'Leave the end time empty and the event ends three hours after it starts.' },
-        { title: 'No feature checklist', text: 'Features get turned on where they’re configured, instead of being picked blind up front.' },
         { title: 'Reassuring copy', text: 'The page says up front that features and settings can be added later, and nothing is permanent.' },
+        { title: 'One flow to maintain', text: '“Simple Events” is gone, so there’s one create path in the product and in the codebase.' },
       ],
     },
     {
-      type: 'feature',
-      eyebrow: 'After creating',
-      title: 'Enhance when you’re ready',
-      text: 'Instead of a locked sequence, an “Enhance your event” card offers four optional paths: date and location details, features, registration and branding, and notifications. Organizers pick what they need, when they need it, and can dismiss it.',
-      images: [images.enhanceCard],
-    },
-    {
       type: 'chapter', number: '02',
-      title: 'Settings organized the way people look for them',
-      text: 'Everything after creation lives on one settings page with a grouped side nav, not behind wizard steps. Organizers jump straight to what they need, and a new feature is a new nav item instead of another step for everyone.',
+      title: 'Settings built for coming back',
+      text: 'An event gets edited far more often than it gets created, so settings moved from horizontal wizard steps to a vertical side nav. I spent a lot of time in meetings with support mapping how organizers think about their events, and grouped everything to match.',
     },
     {
       type: 'spotlight',
       img: images.generalSettings,
       items: [
-        { title: 'Grouped navigation', text: 'Basic setup, Template setup, Add-ons, Features and Advanced, with Event details first.' },
-        { title: 'Toggle cards', text: 'Big switches like paid events and phone verification get an icon and a one-line explanation.' },
-        { title: 'Related fields together', text: 'Options sit directly under the setting they belong to, like the verification note under phone verification.' },
-        { title: 'Honest warnings', text: 'Choices that can’t be undone say so, like turning on paid events.' },
-        { title: 'Room to grow', text: 'New features get their own page in the nav, so the form doesn’t get longer for everyone.' },
+        { title: 'Vertical navigation', text: 'Every section is one click away while editing, instead of behind a row of wizard steps.' },
+        { title: 'Most-used settings first', text: 'Support told us which settings organizers change most. Those moved from the last step to the top.' },
+        { title: 'Collapsible sections', text: 'Groups like Template Design and Advanced Settings expand in place, so you can see exactly which section you need.' },
+        { title: 'Grouped fields', text: 'Related settings sit together, like the verification note right under phone verification.' },
+        { title: 'Features and add-ons on the side', text: 'Every feature has its own spot in the nav, so new ones don’t make the form longer.' },
+      ],
+    },
+    {
+      type: 'feature',
+      eyebrow: 'New revenue',
+      title: 'Our first in-app upsell',
+      text: 'The product had never sold upgrades inside the app. Now the nav shows every feature and add-on, including ones an organizer’s plan doesn’t include yet. Clicking a premium feature opens an upgrade modal with two clear choices: add it to this event, or unlock everything with the Pro plan.',
+      images: [images.upgradeModal],
+    },
+    {
+      type: 'chapter', number: '03',
+      title: 'A page builder with a live preview',
+      text: 'Not being able to see the page while editing it was one of the biggest complaints about the old form. The new builder shows every change live, with a completely new look for the public page.',
+    },
+    {
+      type: 'showcase',
+      title: 'Drag, drop, see it live',
+      text: 'Organizers drag sections to reorder them, hide what they don’t need, add new blocks, and preview desktop, mobile, Thank You and Form Closed states before publishing. Themes keep every page on brand with the organization’s colors, logo and navigation.',
+      main: images.pageBuilder,
+      phone: images.registrationMobile,
+    },
+    { type: 'compare', before: images.registrationBefore, after: images.registrationAfter },
+    {
+      type: 'changes',
+      items: [
+        { title: 'A completely new look', text: 'A branded hero, labels that stay put while you type, and one clear Register button instead of three.' },
+        { title: 'On brand by default', text: 'Theming pulls in the organization’s colors, logo and site navigation.' },
+        { title: 'Classic theme', text: 'Existing events can keep a “Classic” theme that skins the new builder like the old page, so nothing changes until they’re ready.' },
+      ],
+    },
+    {
+      type: 'list',
+      title: 'Under the hood',
+      text: 'The public pages are Laravel Blade; the create flow, settings and builder are Vue 3 + Tailwind. Designing it myself meant I could plan the code structure while I was still in Figma.',
+      items: [
+        'Removed the separate “Simple Events” form, so there’s one create flow to maintain.',
+        'Pulled duplicated markup and CSS out of 15+ Blade templates into shared partials, so every public event page renders from one source.',
+        'Fixed older bugs along the way, including a time-formatting crash and an inverted timezone setting.',
       ],
     },
   ],
 
-  // TODO: swap in real numbers if you have them (support tickets, time to create an event)
+  // TODO: swap in real numbers if you have them (support tickets, upgrades, time to create an event)
   results: {
     title: 'A form that can grow without getting harder to use.',
     items: [
-      { title: 'Four fields to start', text: 'Down from a five-step wizard that asked about everything up front.' },
-      { title: 'Fewer support tickets', text: 'Settings are where organizers expect them, with plain-language explanations.' },
-      { title: 'Built to grow', text: 'New features get their own page instead of making one long form longer.' },
+      { title: 'One create flow', text: 'Replaced both the five-step wizard and “Simple Events,” with a lot less code to maintain.' },
+      { title: 'First in-app upsell', text: 'Premium features are visible and one click from an upgrade, a new revenue path.' },
+      { title: 'Live preview', text: 'Fixed one of the most common complaints about the old form.' },
     ],
   },
 }

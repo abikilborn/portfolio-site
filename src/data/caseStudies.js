@@ -18,6 +18,6 @@
 import events from './studies/events'
 import eventSetup from './studies/eventSetup'
 
-export const caseStudies = [events, eventSetup]
+export const caseStudies = [eventSetup, events]
 
 export const getCaseStudy = (slug) => caseStudies.find((c) => c.slug === slug)
