@@ -48,7 +48,7 @@ export default function About() {
               ))}
             </div>
 
-            <a href={myResume} download
+            <a href={myResume} download="Abigail_Kilborn_Resume.pdf"
               className="flex items-center justify-center gap-1.5 w-full text-[0.75rem] font-semibold text-stone-700 bg-white border border-stone-200 py-2.5 rounded-lg hover:bg-stone-50 transition-colors no-underline">
               ↓ Download Resume
             </a>

@@ -160,7 +160,7 @@ export default function Nav() {
                   {s.label}
                 </a>
               ))}
-              <a href={myResume} download className="text-center text-[0.75rem] font-semibold text-stone-700 bg-white border border-stone-200 py-2.5 rounded-lg hover:bg-stone-100 no-underline">
+              <a href={myResume} download="Abigail_Kilborn_Resume.pdf" className="text-center text-[0.75rem] font-semibold text-stone-700 bg-white border border-stone-200 py-2.5 rounded-lg hover:bg-stone-100 no-underline">
                 Resume
               </a>
             </div>
