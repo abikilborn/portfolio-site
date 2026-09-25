@@ -1,6 +1,7 @@
 // Event form case study (/work/event-setup-redesign)
 
 import quickCreate from '../../assets/imgs/forms/quick-create.webp'
+import step1Before from '../../assets/imgs/forms/before-step1-general.webp'
 import generalSettings from '../../assets/imgs/forms/after-general-settings.webp'
 import upgradeModal from '../../assets/imgs/forms/upgrade-modal.webp'
 import pageBuilder from '../../assets/imgs/events/page-builder.webp'
@@ -9,6 +10,7 @@ import registrationAfter from '../../assets/imgs/events/registration-after.webp'
 import registrationMobile from '../../assets/imgs/events/registration-mobile.webp'
 
 const images = {
+  step1Before: { src: step1Before, width: 1341, height: 989, url: 'nucleus.app/connect/events/create', alt: 'Old create form, step 1 of 5: event info fields next to a checklist of eight features to pick up front' },
   quickCreate: { src: quickCreate, width: 1512, height: 1067, url: 'nucleus.app/connect/events/create', alt: 'New create screen: “Let’s set up your event” with name, start, end and location fields' },
   generalSettings: { src: generalSettings, width: 1512, height: 944, url: 'nucleus.app/connect/events/settings', alt: 'New General Settings page with a vertical, grouped side nav and toggle cards for paid events, phone verification, tickets and multiple signups' },
   upgradeModal: { src: upgradeModal, width: 655, height: 567, plain: true, maxWidth: 440, alt: 'Upgrade modal offering VIP Credentialing as a $49 per-event add-on or the $199 per month Pro plan' },
@@ -87,19 +89,89 @@ export default {
 
   body: [
     {
+      type: 'jobs',
+      title: 'What people are trying to get done',
+      groups: [
+        {
+          who: 'Organizers (campaign staff and volunteers)',
+          jobs: [
+            'When I have a new event, I want to create it fast so I can start sharing it.',
+            'When details change, I want to jump straight to the right setting instead of clicking through a wizard.',
+            'When I need more, like tickets, VIPs or questions, I want to add it without starting over.',
+          ],
+        },
+        {
+          who: 'Customer support',
+          jobs: [
+            'When an organizer asks how to change something, I want the setting to be where they would expect it.',
+            'When a new feature ships, I want it to have an obvious home instead of another step everyone has to get through.',
+          ],
+        },
+      ],
+      note: 'Framed from ongoing conversations with our customer support team.',
+    },
+    {
+      type: 'flow',
+      title: 'From a fixed wizard to create-then-edit',
+      text: 'The old flow asked for everything in a fixed order. The new one gets the event created in two steps, then lets organizers come back to any setting directly.',
+      lanes: [
+        {
+          label: 'Before · five steps, every time',
+          tone: 'before',
+          steps: [
+            { title: 'General', text: 'Event info, plus a checklist of 8 features to pick up front' },
+            { title: 'Date & Location', text: 'Dates, signup and door windows, address, map' },
+            { title: 'Feature Settings', text: 'One sub-page for every feature checked in step 1' },
+            { title: 'Template', text: 'Copy, SEO, six image slots, field visibility' },
+            { title: 'Settings', text: 'Verification, redirects, confirmations', flag: 'The most-edited settings lived here, last' },
+          ],
+        },
+        {
+          label: 'After · create fast, edit anytime',
+          tone: 'after',
+          steps: [
+            { title: 'Quick create', text: 'Name, start, end and location' },
+            { title: 'Event created', text: 'Ready to share; everything else is optional' },
+            {
+              title: 'Settings, one click away',
+              text: 'A vertical nav organizers come back to',
+              items: [
+                { label: 'Basic setup · most-used first', flag: true },
+                { label: 'Template setup' },
+                { label: 'Add-ons (incl. premium)' },
+                { label: 'Features' },
+                { label: 'Advanced' },
+              ],
+            },
+          ],
+        },
+      ],
+      note: 'Recreated for this case study from the old and new flows.',
+    },
+    {
       type: 'chapter', number: '01',
       title: 'One two-step flow instead of two forms',
       text: 'The original ask was simple: let organizers create an event quickly, without feeling like they have to fill out a whole form. The old answer was a separate “Simple Events” form next to the full wizard. I replaced both with one two-step flow, which kept the quick path and removed a big chunk of duplicate code.',
     },
     {
-      type: 'spotlight',
-      img: images.quickCreate,
-      items: [
-        { title: 'Essentials first', text: 'Name, start, end and location are enough to create the event. Everything else can wait.' },
-        { title: 'Smart defaults', text: 'Leave the end time empty and the event ends three hours after it starts.' },
-        { title: 'Reassuring copy', text: 'The page says up front that features and settings can be added later, and nothing is permanent.' },
-        { title: 'One flow to maintain', text: '“Simple Events” is gone, so there’s one create path in the product and in the codebase.' },
-      ],
+      type: 'annotated',
+      before: {
+        img: images.step1Before,
+        notes: [
+          { x: 56, y: 17, text: 'Five fixed steps, even to make one small change.' },
+          { x: 90, y: 44, text: 'Organizers had to pick features before any of them could be set up.' },
+          { x: 42, y: 45, text: 'Name, URL slug and page title all asked for before the event existed.' },
+        ],
+      },
+      after: {
+        img: images.quickCreate,
+        notes: [
+          { x: 77, y: 26, text: 'Reassuring copy: details can be added later, and nothing is permanent.' },
+          { x: 78, y: 42, text: 'Only the essentials: name, start, end and location.' },
+          { x: 78, y: 60, text: 'Smart default: leave the end empty and the event ends three hours after it starts.' },
+          { x: 58, y: 77, text: 'Multi-day is a link for the few who need it, not a checkbox for everyone.' },
+        ],
+      },
     },
     {
       type: 'chapter', number: '02',
@@ -110,11 +182,11 @@ export default {
       type: 'spotlight',
       img: images.generalSettings,
       items: [
-        { title: 'Vertical navigation', text: 'Every section is one click away while editing, instead of behind a row of wizard steps.' },
-        { title: 'Most-used settings first', text: 'Support told us which settings organizers change most. Those moved from the last step to the top.' },
-        { title: 'Collapsible sections', text: 'Groups like Template Design and Advanced Settings expand in place, so you can see exactly which section you need.' },
-        { title: 'Grouped fields', text: 'Related settings sit together, like the verification note right under phone verification.' },
-        { title: 'Features and add-ons on the side', text: 'Every feature has its own spot in the nav, so new ones don’t make the form longer.' },
+        { x: 24, y: 62, title: 'Vertical navigation', text: 'Every section is one click away while editing, instead of behind a row of wizard steps.' },
+        { x: 29, y: 21, title: 'Most-used settings first', text: 'Support told us which settings organizers change most. Those moved from the last step to the top.' },
+        { x: 29, y: 32.5, title: 'Collapsible sections', text: 'Groups like Template Design and Advanced Settings expand in place, so you can see exactly which section you need.' },
+        { x: 88, y: 55, title: 'Grouped fields', text: 'Related settings sit together, like the verification note right under phone verification.' },
+        { x: 29, y: 43.5, title: 'Features and add-ons on the side', text: 'Every feature has its own spot in the nav, so new ones don’t make the form longer.' },
       ],
     },
     {
@@ -136,13 +208,36 @@ export default {
       main: images.pageBuilder,
       phone: images.registrationMobile,
     },
-    { type: 'compare', before: images.registrationBefore, after: images.registrationAfter },
     {
-      type: 'changes',
+      type: 'annotated',
+      before: {
+        img: images.registrationBefore,
+        notes: [
+          { x: 50, y: 5, text: 'No header or navigation, so the page felt disconnected from the org’s own site.' },
+          { x: 58, y: 69, text: 'Placeholder-only labels disappear as soon as you start typing.' },
+          { x: 62, y: 91, text: 'Three identical red buttons and no clear primary action.' },
+          { x: 88, y: 62, text: 'Event details as a plain stack of text.' },
+        ],
+      },
+      after: {
+        img: images.registrationAfter,
+        notes: [
+          { x: 40, y: 3, text: 'The org’s branding and navigation sit over the event photo, with a live “Registration open” status.' },
+          { x: 30, y: 29, text: 'Labels stay above each field, with a required-field legend.' },
+          { x: 50, y: 78, text: 'A callout explains phone verification before anyone hits submit.' },
+          { x: 33, y: 83, text: 'One clear Register button.' },
+          { x: 78, y: 28, text: 'Date, doors, location and contact in a scannable, icon-led card.' },
+        ],
+      },
+    },
+    {
+      type: 'decisions',
       items: [
-        { title: 'A completely new look', text: 'A branded hero, labels that stay put while you type, and one clear Register button instead of three.' },
-        { title: 'On brand by default', text: 'Theming pulls in the organization’s colors, logo and site navigation.' },
-        { title: 'Classic theme', text: 'Existing events can keep a “Classic” theme that skins the new builder like the old page, so nothing changes until they’re ready.' },
+        { title: 'Merge “Simple Events” into one two-step flow', why: 'The quick path was the original ask, but two separate forms meant two mental models for organizers and two code paths for us.', instead: 'keeping a separate simple form next to the full wizard.' },
+        { title: 'Vertical navigation for settings', why: 'Events get edited far more often than they get created. A side nav makes every section one click away.', instead: 'horizontal wizard steps you have to click through in order.' },
+        { title: 'Most-used settings at the top', why: 'Support kept hearing that the settings organizers change most were buried in the last step.', instead: 'ordering settings by when the old wizard happened to ask for them.' },
+        { title: 'Show premium features instead of hiding them', why: 'Organizers can’t want what they can’t see. A visible, badged feature creates a natural moment to upgrade.', instead: 'only showing what the current plan includes.' },
+        { title: 'Offer a Classic theme', why: 'Existing events keep looking the way organizers set them up until they choose to switch.', instead: 'forcing every live event onto the new look at once.' },
       ],
     },
     {

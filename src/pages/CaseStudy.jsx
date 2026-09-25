@@ -58,7 +58,7 @@ function Changes({ items }) {
 
 function Showcase({ title, text, main, phone }) {
   return (
-    <Reveal className="mt-16 bg-white border border-stone-200 rounded-3xl p-6 md:p-10">
+    <Reveal className="mt-16 mb-12 bg-white border border-stone-200 rounded-3xl p-6 md:p-10">
       <div className="max-w-2xl mb-8">
         <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold tracking-tight mb-3">{title}</h3>
         <p className="text-[0.95rem] text-stone-500 leading-relaxed">{text}</p>
@@ -95,7 +95,11 @@ function Feature({ eyebrow, title, text, images }) {
 function Spotlight({ img, items }) {
   return (
     <Reveal className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] gap-8 lg:gap-12 items-start">
-      <BrowserFrame img={img} className="shadow-lg shadow-brand-900/5" />
+      <BrowserFrame
+        img={img}
+        pins={items.every((it) => it.x != null) ? items : null}
+        className="shadow-lg shadow-brand-900/5"
+      />
       <ol className="divide-y divide-stone-200 border-y border-stone-200">
         {items.map((item, i) => (
           <li key={item.title} className="flex gap-3.5 py-4">
@@ -194,6 +198,166 @@ function Build({ title, text, points }) {
   )
 }
 
+function NoteList({ notes, tone }) {
+  const dot = tone === 'before' ? 'bg-red-500' : 'bg-brand-600'
+  return (
+    <ol className="mt-4 space-y-2.5">
+      {notes.map((n, i) => (
+        <li key={n.text} className="flex gap-3 text-sm text-stone-600 leading-relaxed">
+          <span className={`shrink-0 mt-px w-5 h-5 rounded-full ${dot} text-white text-[0.65rem] font-bold flex items-center justify-center`}>{i + 1}</span>
+          {n.text}
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+// Before/after with numbered markers on both screenshots
+function Annotated({ before, after }) {
+  const label = 'inline-flex items-center gap-1.5 text-[0.68rem] font-bold tracking-[0.08em] uppercase mb-3'
+  return (
+    <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
+      <div>
+        <p className={`${label} text-red-600`}><span className="w-1.5 h-1.5 rounded-full bg-red-500" />Before · where it caused friction</p>
+        <BrowserFrame img={before.img} pins={before.notes} tone="before" />
+        <NoteList notes={before.notes} tone="before" />
+      </div>
+      <div>
+        <p className={`${label} text-brand-600`}><span className="w-1.5 h-1.5 rounded-full bg-brand-500" />After · how the design fixes it</p>
+        <BrowserFrame img={after.img} pins={after.notes} tone="after" className="shadow-lg shadow-brand-900/5" />
+        <NoteList notes={after.notes} tone="after" />
+      </div>
+    </Reveal>
+  )
+}
+
+// Who the design serves, framed as jobs to be done
+function Jobs({ title, text, groups, note }) {
+  return (
+    <Reveal className="pt-20">
+      <div className="max-w-2xl mb-6">
+        <Eyebrow>Who it's for</Eyebrow>
+        <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h2>
+        {text && <p className="text-[0.95rem] text-stone-500 leading-relaxed">{text}</p>}
+      </div>
+      <div className={`grid grid-cols-1 gap-4 ${groups.length > 1 ? 'md:grid-cols-2' : ''}`}>
+        {groups.map((g) => (
+          <div key={g.who} className="bg-white border border-stone-200 rounded-2xl p-6">
+            <p className="text-sm font-semibold text-stone-900 mb-4">{g.who}</p>
+            <ul className="space-y-3">
+              {g.jobs.map((j) => (
+                <li key={j} className="text-sm text-stone-600 leading-relaxed pl-3 border-l-2 border-brand-200">{j}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      {note && <p className="text-xs text-stone-400 mt-3">{note}</p>}
+    </Reveal>
+  )
+}
+
+// Before/after user flow, drawn as step boxes
+function FlowLane({ lane }) {
+  const bad = lane.tone === 'before'
+  return (
+    <div>
+      <p className={`inline-flex items-center gap-1.5 text-[0.68rem] font-bold tracking-[0.08em] uppercase mb-3 ${bad ? 'text-red-600' : 'text-brand-600'}`}>
+        <span className={`w-1.5 h-1.5 rounded-full ${bad ? 'bg-red-500' : 'bg-brand-500'}`} />{lane.label}
+      </p>
+      <ol className="flex flex-col lg:flex-row lg:items-stretch gap-2">
+        {lane.steps.map((st, i) => (
+          <li key={st.title} className="flex flex-col lg:flex-row items-stretch gap-2 lg:flex-1 min-w-0">
+            <div className={`flex-1 rounded-xl border p-4 ${st.flag ? (bad ? 'border-red-300 bg-red-50' : 'border-brand-300 bg-brand-50') : 'border-stone-200 bg-white'}`}>
+              <p className="text-[0.65rem] font-mono font-semibold text-stone-400 mb-1">{String(i + 1).padStart(2, '0')}</p>
+              <p className="text-sm font-semibold text-stone-900 leading-snug mb-1">{st.title}</p>
+              {st.text && <p className="text-xs text-stone-500 leading-relaxed">{st.text}</p>}
+              {st.items && (
+                <ul className="mt-2 space-y-1">
+                  {st.items.map((it) => (
+                    <li key={it.label} className={`text-xs rounded-md px-2 py-1 ${it.flag ? 'bg-brand-600 text-white font-semibold' : 'bg-stone-100 text-stone-600'}`}>{it.label}</li>
+                  ))}
+                </ul>
+              )}
+              {st.flag && <p className={`mt-2 text-[0.7rem] font-semibold ${bad ? 'text-red-600' : 'text-brand-700'}`}>{st.flag}</p>}
+            </div>
+            {i < lane.steps.length - 1 && (
+              <span aria-hidden="true" className="self-center text-stone-300 text-sm lg:px-0.5"><span className="lg:hidden">↓</span><span className="hidden lg:inline">→</span></span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
+function Flow({ title, text, lanes, note }) {
+  return (
+    <Reveal className="pt-20">
+      <div className="max-w-2xl mb-6">
+        <Eyebrow>User flow</Eyebrow>
+        <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold tracking-tight mb-3">{title}</h2>
+        {text && <p className="text-[0.95rem] text-stone-500 leading-relaxed">{text}</p>}
+      </div>
+      <div className="bg-stone-100/70 border border-stone-200 rounded-3xl p-5 md:p-8 space-y-8">
+        {lanes.map((lane) => <FlowLane key={lane.label} lane={lane} />)}
+      </div>
+      {note && <p className="text-xs text-stone-400 mt-3">{note}</p>}
+    </Reveal>
+  )
+}
+
+// Where the answers to organizers' questions live, before vs after
+function Answers({ title, text, items }) {
+  return (
+    <Reveal className="mt-16">
+      <div className="max-w-2xl mb-6">
+        <Eyebrow>Information architecture</Eyebrow>
+        <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold tracking-tight mb-3">{title}</h3>
+        {text && <p className="text-[0.95rem] text-stone-500 leading-relaxed">{text}</p>}
+      </div>
+      <div className="border border-stone-200 rounded-2xl overflow-hidden bg-white divide-y divide-stone-200">
+        <div className="hidden md:grid grid-cols-[1.1fr_1fr_1.3fr] gap-6 px-6 py-3 bg-stone-50 text-[0.68rem] font-bold tracking-[0.08em] uppercase">
+          <span className="text-stone-500">Organizer's question</span>
+          <span className="text-red-600">Before</span>
+          <span className="text-brand-600">After</span>
+        </div>
+        {items.map((it) => (
+          <div key={it.q} className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr_1.3fr] gap-1.5 md:gap-6 px-6 py-4">
+            <p className="text-sm font-semibold text-stone-900">“{it.q}”</p>
+            <p className="text-sm text-stone-500"><span className="md:hidden font-semibold text-red-600">Before: </span>{it.before}</p>
+            <p className="text-sm text-stone-700"><span className="md:hidden font-semibold text-brand-600">After: </span>{it.after}</p>
+          </div>
+        ))}
+      </div>
+    </Reveal>
+  )
+}
+
+// Design decisions with the reasoning and the road not taken
+function Decisions({ items }) {
+  return (
+    <Reveal className="mt-24">
+      <div className="max-w-2xl mb-6">
+        <Eyebrow>Key decisions</Eyebrow>
+        <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold tracking-tight">Why it works this way</h2>
+      </div>
+      <ol className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {items.map((d, i) => (
+          <li key={d.title} className="bg-white border border-stone-200 rounded-2xl p-6">
+            <p className="text-[0.7rem] font-mono font-semibold text-brand-600 mb-2">Decision {String(i + 1).padStart(2, '0')}</p>
+            <h3 className="text-base font-semibold text-stone-900 mb-2">{d.title}</h3>
+            <p className="text-sm text-stone-600 leading-relaxed mb-3">{d.why}</p>
+            <p className="text-xs text-stone-500 leading-relaxed border-t border-stone-100 pt-3">
+              <span className="font-semibold text-stone-700">Instead of: </span>{d.instead}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </Reveal>
+  )
+}
+
 function Block({ block }) {
   switch (block.type) {
     case 'chapter': return <Chapter {...block} />
@@ -203,6 +367,11 @@ function Block({ block }) {
     case 'feature': return <Feature {...block} />
     case 'spotlight': return <Spotlight {...block} />
     case 'build': return <Build {...block} />
+    case 'annotated': return <Annotated {...block} />
+    case 'jobs': return <Jobs {...block} />
+    case 'flow': return <Flow {...block} />
+    case 'answers': return <Answers {...block} />
+    case 'decisions': return <Decisions {...block} />
     default: return null
   }
 }

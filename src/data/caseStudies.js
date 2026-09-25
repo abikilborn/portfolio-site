@@ -6,7 +6,12 @@
 //   { type: 'changes',   items: [{ title, text }] }
 //   { type: 'showcase',  title, text, main: img, phone: img }
 //   { type: 'feature',   eyebrow, title, text, images: [img] }
-//   { type: 'spotlight', img, items: [{ title, text }] }
+//   { type: 'spotlight', img, items: [{ title, text, x?, y? }] }  (x/y add pins)
+//   { type: 'annotated', before: { img, notes: [{ x, y, text }] }, after: {...} }
+//   { type: 'jobs',      title, text?, groups: [{ who, jobs: ['...'] }], note? }
+//   { type: 'flow',      title, text?, lanes: [{ label, tone, steps: [{ title, text?, flag?, items? }] }], note? }
+//   { type: 'answers',   title, text?, items: [{ q, before, after }] }
+//   { type: 'decisions', items: [{ title, why, instead }] }
 //   { type: 'build',     title, text, points: [{ title, text }] }
 //
 // img = { src, alt, width, height, url?, plain?, maxWidth? }

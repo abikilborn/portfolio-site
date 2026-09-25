@@ -67,20 +67,70 @@ export default {
 
   body: [
     {
+      type: 'jobs',
+      title: 'What organizers come here to do',
+      groups: [
+        {
+          who: 'Organizers (campaign staff and volunteers)',
+          jobs: [
+            'When my event is coming up, I want to know at a glance if signups are on track.',
+            'When I’m promoting it, I want to see which channels are actually bringing people in.',
+            'When I share it, I want the link or QR code in one click.',
+            'When something needs to change, I want to get to the editor without hunting for it.',
+            'I want to know what’s turned on for this event without opening the editor.',
+          ],
+        },
+      ],
+      note: 'Framed from regular conversations with our customer reps about what organizers use and ignore.',
+    },
+    {
       type: 'chapter', number: '01',
       title: 'Built around what users actually care about',
       text: 'I met regularly with our customer reps to learn which numbers organizers use and which ones they ignore. That shaped every decision: what to show, what to rename, what to group together and what to drop.',
     },
-    { type: 'compare', before: images.overviewBefore, after: images.overviewAfter },
     {
-      type: 'changes',
+      type: 'annotated',
+      before: {
+        img: images.overviewBefore,
+        notes: [
+          { x: 52, y: 20, text: 'No obvious way to edit the event or open the live page.' },
+          { x: 47, y: 44, text: 'Only totals, with no trend over time or target to compare against.' },
+          { x: 76, y: 56, text: 'Eight tiles with equal weight, so nothing stood out.' },
+          { x: 33, y: 62, text: 'Five link fields stacked in a column, taking up a third of the page.' },
+        ],
+      },
+      after: {
+        img: images.overviewAfter,
+        notes: [
+          { x: 69, y: 11, text: 'View live page and Edit event details right in the header.' },
+          { x: 47, y: 23, text: 'Four KPIs with trends and context, like “of 300 target.”' },
+          { x: 31, y: 32, text: 'Signups over time, with page views overlaid so a spike has context.' },
+          { x: 31, y: 57, text: 'Traffic sources by UTM, state, device and referrer.' },
+          { x: 76, y: 32, text: 'Live link, preview link and QR code in one sharing card.' },
+          { x: 76, y: 58, text: 'Which features are on, at a glance.' },
+        ],
+      },
+    },
+    {
+      type: 'answers',
+      title: 'Where the answers live now',
+      text: 'I mapped the questions organizers bring to this page against where the old design put the answer.',
       items: [
-        { title: 'Graphs that matter', text: 'A 14-day signups chart that can overlay page views, plus traffic sources by UTM, state, device and referrer.' },
-        { title: 'Regrouped to scan', text: 'Four KPI cards up top, sharing tools together, and recent registrations at the bottom.' },
-        { title: 'Labels with context', text: 'Renamed fields and added short notes so numbers explain themselves, like “of 300 target” under total signups.' },
-        { title: 'Up front, not buried', text: 'Status, date, registration window, and the Edit and View live page actions sit right in the header.' },
-        { title: 'Features at a glance', text: 'An Event features card shows what’s enabled, so organizers don’t have to open Edit > Features to check.' },
-        { title: 'On brand', text: 'Updated to the product’s current colors and components, so it feels like the rest of Nucleus.' },
+        { q: 'Are signups on track?', before: 'A total signups tile with no target or trend', after: 'Total Signups KPI with target and % change, plus a 14-day chart' },
+        { q: 'Where are signups coming from?', before: 'Not on the overview', after: 'Traffic sources card: UTM, state, device and referrer' },
+        { q: 'What’s turned on for this event?', before: 'Edit > Features', after: 'Event features card on the overview' },
+        { q: 'How do I share it?', before: 'Five separate link fields and a QR code at the bottom', after: 'One Share & links card with live link, preview link and QR code' },
+        { q: 'How do I change something?', before: 'No edit action on the page', after: 'Edit event details button in the header' },
+        { q: 'Who just registered?', before: 'Not on the overview', after: 'Recent registrations with Verified, Checked in and Incomplete badges' },
+      ],
+    },
+    {
+      type: 'decisions',
+      items: [
+        { title: 'Four KPIs instead of eight tiles', why: 'When everything has equal weight, nothing stands out. Customer reps told us which numbers organizers actually check, so those got the top row.', instead: 'giving every stat its own tile.' },
+        { title: 'Context on every number', why: '“271” means little on its own. “271 of 300 target, +25%” tells you whether you’re on track.', instead: 'raw totals with no comparison.' },
+        { title: 'Feature status on the overview', why: 'Organizers were opening Edit > Features just to check what was on.', instead: 'keeping feature status inside the edit flow only.' },
+        { title: 'One sharing card', why: 'Five separate link fields took a third of the page for a task that usually needs one link or a QR code.', instead: 'a field per link, stacked down the side.' },
       ],
     },
     {

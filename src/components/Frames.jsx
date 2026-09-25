@@ -49,7 +49,26 @@ function ZoomImg({ img }) {
   )
 }
 
-export function BrowserFrame({ img, className = '' }) {
+// Numbered markers over a screenshot; x/y are percentages of the image
+const pinTone = {
+  before: 'bg-red-500 text-white ring-red-500/25',
+  after: 'bg-brand-600 text-white ring-brand-600/25',
+}
+
+export function Pins({ pins, tone = 'after' }) {
+  return pins.map((p, i) => (
+    <span
+      key={i}
+      aria-hidden="true"
+      style={{ left: `${p.x}%`, top: `${p.y}%` }}
+      className={`pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[0.7rem] sm:text-xs font-bold shadow-lg ring-4 ${pinTone[tone]}`}
+    >
+      {i + 1}
+    </span>
+  ))
+}
+
+export function BrowserFrame({ img, pins, tone, className = '' }) {
   return (
     <figure className={`bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm ${className}`}>
       <div className="bg-stone-100 border-b border-stone-200 px-3 py-2 flex items-center gap-1.5">
@@ -60,7 +79,10 @@ export function BrowserFrame({ img, className = '' }) {
           {img.url}
         </div>
       </div>
-      <ZoomImg img={img} />
+      <div className="relative">
+        <ZoomImg img={img} />
+        {pins && <Pins pins={pins} tone={tone} />}
+      </div>
     </figure>
   )
 }
